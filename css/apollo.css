@@ -1,0 +1,9 @@
+#apollo-top-panel{top: 0; left: 0; position: fixed; width: 100%; height: 45px; background-color: #4277AB; padding: 10px; display: inline-table; z-index: 2147483500; box-sizing: border-box; font-weight:bold;}
+#apollo-top-panel ul{position: fixed; right: 30px;}
+#apollo-top-panel ul li{float: left; margin: 10px;}
+#apollo-display {height: 45px; line-height: 28px;}
+#apollo-content-container{position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: #555; opacity: .9; /*filter:alpha(opacity:80) z-index: 111;*/ z-index: 115; padding: 10px; color: white; font-weight: bold; overflow: scroll; }
+
+.apollo-hover {background: #FF9933; cursor: hand; }
+.apollo-property-container {}
+.apollo-property-list {padding: 5px;background-color:black;border:1px solid gray;width: 10px;width: 10px; margin: 5px;float: left;}
