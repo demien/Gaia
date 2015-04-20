@@ -1,7 +1,6 @@
 (function(){
 
     scripts = document.getElementsByTagName('script')[0];
-
     var js_fils = [
         '/js/lib/angular.js',
         '/js/lib/jquery-2.1.0.min.js',
@@ -11,8 +10,9 @@
         '/js/angular_controller.js',
         '/js/bootstrap.js',
     ];
-    js_fils.map(function(url){load(url)});
 
+    js_fils.map(function(url){load(url)});
+    
     function load(url) {
         script = document.createElement('script');
         script.defer = true;
