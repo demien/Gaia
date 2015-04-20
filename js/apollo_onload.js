@@ -1,19 +1,13 @@
 (function(){
 
-    function loadScript(urls, index){
-        if(!index ) {
-          index = 0;
-        }
-        if(index == urls.length){
-            return;
-        }
-
+    function loadScript(urls){
+        if(urls.length == 0) {return;}
         var script = document.createElement("script")
+        var url = urls.shift()
         script.type = "text/javascript";
-        script.src = urls[index];
-        index++;
+        script.src = url;
         script.addEventListener('load', function(){
-            loadScript(urls, index);
+            loadScript(urls);
         });
         document.body.appendChild(script);
     };
