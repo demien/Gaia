@@ -83,3 +83,11 @@ USE_TZ = True
 STATIC_URL = 'localhost/'
 STATICFILES_JS_DIRS = os.path.join(PROJECT_BASE_DIR, 'js')
 STATICFILES_CSS_DIRS = os.path.join(PROJECT_BASE_DIR, 'css')
+
+
+STORAGE_MONGODB = {
+    'gaia': {
+        'HOST': 'localhost',
+        'PORT': 27017,
+    },
+}
