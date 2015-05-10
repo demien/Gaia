@@ -1,0 +1,11 @@
+<div class="edit-container" ng-show="showctl">
+  <label class="label label-success">数据编辑</label>
+  <div ng-repeat="(key, value) in config">
+    <div class="config-element">
+      <label class="label label-info">名称</label>
+      <input class="edit-input" ng-model="value.name"></input>
+      <label class="label label-info">css规则</label>
+      <p>{{value.css}}</p>
+    </div>
+  </div>
+</div>

@@ -6,4 +6,21 @@
 
 .apollo-hover {background: #FF9933; cursor: hand; }
 .apollo-property-container {}
-.apollo-property-list {padding: 5px;background-color:black;border:1px solid gray;width: 10px;width: 10px; margin: 5px;float: left;}
+.apollo-property-list {padding: 5px;background-color:black;border:1px solid gray;width: 10px;width: 10px; margin: 5px;/*float: left;*/}
+
+
+.preview-container, .edit-container{
+  position: fixed;
+  top: 65px;
+  right: 3px;
+  width: 400px;
+  height: 800px;
+  overflow: scroll;
+  background-color: #FFFFCC;
+}
+
+.config-element{
+  margin: 3px;
+  border: solid 1px #ccc;
+  box-shadow: 1px 1px #ccc;
+}

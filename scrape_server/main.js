@@ -20,6 +20,7 @@ var service = server.listen(ip_server, function(request, response) {
     casper.run(function() {
         var html = this.getHTML();
         html += '<link rel="stylesheet" href="http://localhost/css/apollo.css" type="text/css" >';
+        html += '<link rel="stylesheet" href="http://localhost/css/bootstrap.min.css" type="text/css" >';
         html += '<script type="text/javascript" src="http://localhost/js/apollo_onload.js"></script>';
         response.setEncoding('UTF-8');
         response.statusCode = 200;

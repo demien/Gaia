@@ -8,6 +8,7 @@ var config = function(){
     }
 
     format_collection = function(collection){
+        console.log(collection);
         var length_array = [],
             result = [];
         var property_name_list = [];
@@ -30,6 +31,7 @@ var config = function(){
 
     show_html = function(){
         var dom = {}
+        console.log(config_css);
         for(collection_name in config_css){
             collection = config_css[collection_name];
             var collection_result = {};
