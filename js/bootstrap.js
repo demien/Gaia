@@ -1,6 +1,5 @@
 (function(){
-    // var html = tpl.top_control_panel;
-    var html = tpl.new_top_control_panel;
+    var html = tpl.top_control_panel;
     $('body').css('padding-top', '60px');
     $('body').append(html);
 
@@ -41,37 +40,6 @@
             // apollo.$apply();//TODO 哪一个更好
         });
     };
-    
-    // 将通过angular directive实现
-    // nav event combine
-    // $('#apollo-preview').click(function(e) {
-    //     content_container = show_container()
-    //     pre = $('pre').html(JSON.stringify(config().show_html(), null, 4));
-    //     content_container.append(pre);
-    // });
-
-    // $('#apollo-set').click(function(e) {
-    //     content_container = $('#apollo-content-container');
-    //     content_container.fadeOut("fast");
-    // });
-
-    // $('#apollo-edit-config').click(function(e) {
-    //     content_container = show_container()
-    //     pre = $('pre').html(JSON.stringify(config().show_config(), null, 4));
-    //     content_container.append(pre);
-    //     // $('.apollo-edit-config').show();
-    // });
-
-    show_container = function(){
-        content_container = $('#apollo-content-container');
-        content_container.css('display', 'None');
-        apollo_top_panel = $('#apollo-top-panel');
-        content_container_height = $(window).height() - apollo_top_panel.height() + 20;
-        content_container.css('height', content_container_height);
-        content_container.css('top', apollo_top_panel.height() + 20);
-        content_container.fadeIn("fast");
-        return content_container
-    }
 
     in_apollo_container = function(el){
         var containers = ['apollo-top-panel', 'apollo-content-container']

@@ -1,14 +1,18 @@
-var config = function(){
+var config = function(configCss){
 
-    var config_css = angular.element($('#apollo-display')).scope().config;
+    var config_css = configCss;
 
-    scrape_css = function(css, re){
+    scrape_css = function(css, re, name){
         var elements = $.find(css);
-        return elements.map(function(element){return new RegExp(re).exec(element.innerText);});  
+        var temp = elements.map(function(element){
+            var regExpRes = new RegExp(re).exec(element.innerText);
+            regExpRes['name'] = name;
+            return regExpRes;
+        });
+        return temp;
     }
 
     format_collection = function(collection){
-        console.log(collection);
         var length_array = [],
             result = [];
         var property_name_list = [];
@@ -22,7 +26,8 @@ var config = function(){
             var item = {};
             for(property_name_index in property_name_list){
                 var property_name = property_name_list[property_name_index];
-                item[property_name] = collection[property_name][i];
+                var tempItem = collection[property_name][i];
+                item[tempItem['name']] = tempItem[0]; // 单元素数组
             }
             result.push(item);
         };
@@ -31,13 +36,12 @@ var config = function(){
 
     show_html = function(){
         var dom = {}
-        console.log(config_css);
         for(collection_name in config_css){
-            collection = config_css[collection_name];
+            var collection = config_css[collection_name];
             var collection_result = {};
             for(property_name in collection){
                 property = collection[property_name];
-                collection_result[property_name] = scrape_css(property['css'], property['re']);
+                collection_result[property_name] = scrape_css(property['css'], property['re'], property['name']);
             }
             dom[collection_name] = format_collection(collection_result);
         }

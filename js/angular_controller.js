@@ -5,8 +5,6 @@ Apollo.controller('apollo_config', function ($scope) {
     $scope.property_cnt = 1;
     $scope.collection_cnt = 1;
 
-    // $scope.tplRootUrl =;
-
     $scope.add_property = function(css){
         var defaultName = '第'+ $scope.property_cnt + '个采集值',
             property = {'css': css, 're': '.*', 'name': defaultName};
@@ -18,14 +16,16 @@ Apollo.controller('apollo_config', function ($scope) {
     $scope.preViewStatus = false;
     $scope.configViewStatus = false;
     $scope.preViewToggle = function(){
+      if(!$scope.preViewStatus){
+        // 准备预览的数据
+        $scope.previewData = JSON.stringify(config($scope.config).show_html(), null, 4);
+      }
       $scope.configViewStatus = false;
       $scope.preViewStatus = !$scope.preViewStatus;
-      console.log($scope.preViewStatus);
     }
     $scope.configViewToggle = function(){
       $scope.preViewStatus = false;
       $scope.configViewStatus = !$scope.configViewStatus;
-      console.log($scope.configViewStatus);
     }
 });
 
@@ -44,6 +44,7 @@ Apollo.directive('apolloPreviewPanel', function(){
 
 // 编辑面板的directive
 Apollo.directive('apolloEditPanel', function(){
+
   return {
     restrict: 'A',
     templateUrl:  "/js/html_templates/" + 'edit.html',
