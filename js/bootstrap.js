@@ -1,6 +1,6 @@
 (function(){
     var html = tpl.top_control_panel;
-    $('body').css('padding-top', '60px');
+    $('body').css('padding-top', '50px');
     $('body').append(html);
 
     // start angular
@@ -24,20 +24,20 @@
             $(el).removeClass('apollo-hover');
             $(el).unbind('click');
         });
-        // 如果已经选择，不再加入
+        // 如果是top panel里的内容，不做相应
         if (in_apollo_container(target)){
             return;
         }
         // 获取css，并且在dom中展示
         var csspath = page_util.csspath_standard(target);
-        $('#apollo-display').html(csspath);
+        // $('#apollo-display').html(csspath);
+
         // 对本次选择添加样式和点击事件
         $(csspath).each(function(index, el){$(el).addClass('apollo-hover')});
         // 利用Jquery绑定的click事件，激活controller的方法
         $(target).click(function(){
             apollo.add_property(csspath);
-            apollo.$digest();
-            // apollo.$apply();//TODO 哪一个更好
+            apollo.$digest(); // 和apollo.$apply() 有什么区别?
         });
     };
 

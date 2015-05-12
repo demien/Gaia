@@ -27,7 +27,9 @@ var config = function(configCss){
             for(property_name_index in property_name_list){
                 var property_name = property_name_list[property_name_index];
                 var tempItem = collection[property_name][i];
-                item[tempItem['name']] = tempItem[0]; // 单元素数组
+                if(tempItem){
+                    item[tempItem['name']] = tempItem[0]; //单元素数组
+                }
             }
             result.push(item);
         };

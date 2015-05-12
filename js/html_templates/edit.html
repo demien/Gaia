@@ -1,21 +1,21 @@
 <div class="edit-container" ng-show="showctl">
-  <div class="edit-content">
-    <label class="label label-success">数据编辑</label>
-    <div ng-repeat="(key, value) in config">
-      <div class="config-element">
-        <div class="edit-name">
-          <label class="label label-info">名称</label><br>
-          <input class="edit-input" ng-model="value.name"></input>
+    <div class="edit-content">
+        <label class="label label-success">配置编辑</label>
+        <div ng-repeat="(key, value) in config">
+            <div class="config-element">
+                <div class="edit-name">
+                    <label class="label label-info">名称</label><br>
+                    <input class="edit-input" ng-model="value.name"></input>
+                </div>
+                <div class="edit-css">
+                    <label class="label label-info">css规则</label><br>
+                    <textarea class="edit-input" ng-model="value.css"></textarea>
+                </div>
+                <div class="edit-reg">
+                    <label class="label label-info">正则规则</label><br>
+                    <textarea class="edit-input" ng-model="value.re"></textarea>
+                </div>
+            </div>
         </div>
-        <div class="edit-css">
-          <label class="label label-info">css规则</label><br>
-          <textarea class="edit-input" ng-model="value.css"></textarea>
-        </div>
-        <div class="edit-reg">
-          <label class="label label-info">正则规则</label><br>
-          <textarea class="edit-input" ng-model="value.re"></textarea>
-        </div>
-      </div>
     </div>
-  </div>
 </div>
