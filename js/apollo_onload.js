@@ -20,7 +20,6 @@
         '/js/config.js',
         '/js/angular_controller.js',
         '/js/bootstrap.js',
-        '/js/lib/ui-bootstrap-tpls-0.13.0.js'
     ];
 
     loadScript(js_fils);

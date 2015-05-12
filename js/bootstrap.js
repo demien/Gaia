@@ -30,8 +30,6 @@
         }
         // 获取css，并且在dom中展示
         var csspath = page_util.csspath_standard(target);
-        // $('#apollo-display').html(csspath);
-
         // 对本次选择添加样式和点击事件
         $(csspath).each(function(index, el){$(el).addClass('apollo-hover')});
         // 利用Jquery绑定的click事件，激活controller的方法
@@ -52,6 +50,7 @@
         return false;
     };
 
+    // init small tool
     String.prototype.startWith = function(s){
         if(s==null||s==""||this.length==0||s.length>this.length)
             return false;
@@ -61,5 +60,14 @@
             return false;
         return true;
     };
+
+    if (!String.prototype.format) {
+        String.prototype.format = function() {
+            var args = arguments;
+            return this.replace(/{(\d+)}/g, function(match, number) {
+                return typeof args[number] != 'undefined' ? args[number] : match;
+            });
+        };
+    }
 
 })();

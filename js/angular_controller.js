@@ -1,11 +1,11 @@
 var Apollo = angular.module('Apollo', []);
 
+
 Apollo.controller('apollo_config', function ($scope) {
     $scope.config = {'collection': {}};
     $scope.property_cnt = 1;
-    $scope.collection_cnt = 1;
     $scope.add_property = function(css){
-        var defaultName = '第'+ $scope.property_cnt + '个采集值',
+        var defaultName = '第{0}个采集值'.format($scope.property_cnt),
             property = {'css': css, 're': '.*', 'name': defaultName};
         $scope.config.collection['property_'+ $scope.property_cnt] = property;
         $scope.property_cnt += 1;
@@ -32,26 +32,20 @@ Apollo.controller('apollo_config', function ($scope) {
     }
 });
 
-// 预览面板的directive
-Apollo.directive('apolloPreviewPanel', function(){
-    return {
-        restrict: 'A',
-        templateUrl:  "/js/html_templates/" + 'preview.html',
-        scope: {
-            config: '=',
-            showctl: '='
-        },
-}
-});
 
-// 编辑面板的directive
-Apollo.directive('apolloEditPanel', function(){
-    return {
-        restrict: 'A',
-        templateUrl:  "/js/html_templates/" + 'edit.html',
-        scope: {
-            config: '=',
-            showctl: '='
-        },
+simple_directive = function(templateUrl){
+    return function(){
+        return {
+            restrict: 'A',
+            templateUrl:  templateUrl,
+            scope: {
+                config: '=',
+                showctl: '='
+            },
+        }
     }
-});
+}
+
+
+Apollo.directive('apolloPreviewPanel', simple_directive('/js/html_templates/preview.html'));
+Apollo.directive('apolloEditPanel', simple_directive('/js/html_templates/edit.html'));
