@@ -13,4 +13,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^css/(?P<path>.*)$','django.views.static.serve', {'document_root':settings.STATICFILES_CSS_DIRS, 'show_indexes': True}),
     url(r'^js/(?P<path>.*)$','django.views.static.serve', {'document_root':settings.STATICFILES_JS_DIRS, 'show_indexes': True}),
+    (r'^', include('api.urls')),
 )
