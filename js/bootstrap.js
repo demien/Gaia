@@ -32,10 +32,11 @@
         var csspath = page_util.csspath_standard(target);
         // 对本次选择添加样式和点击事件
         $(csspath).each(function(index, el){$(el).addClass('apollo-hover')});
+
         // 利用Jquery绑定的click事件，激活controller的方法
         $(target).click(function(){
-            apollo.add_property(csspath);
-            apollo.$digest(); // 和apollo.$apply() 有什么区别?
+            apollo.add_potential_target(csspath);
+            apollo.$digest();
         });
     };
 

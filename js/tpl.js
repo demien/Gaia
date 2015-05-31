@@ -3,7 +3,11 @@ var tpl = {
         <div id="apollo-top-panel" ng-controller="apollo_config"> \
             <div class="apollo-property-container"> \
                 <div ng-repeat="c in config.collection" class="apollo-property-list"> \
+                    {{c.name}} \
+                    <span class="delete-property" ng-click="delete_property(c.pid)">x</span> \
                 </div> \
+                <div class="apollo-property-list" ng-model="tempCss">预览CSS(TODO)</div> \
+                <div class="appolo-select-confirm-btn" ng-click="add_property()">添加</div> \
             </div> \
             <div class="apollo-nav"> \
                 <ul> \
