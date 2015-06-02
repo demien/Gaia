@@ -1,10 +1,8 @@
 var casper = require('casper').create();
 var utils = require("utils");
 
-// var target_url = 'http://www.dianping.com/search/category/2/45/g152';
 var target_url = casper.cli.options.url
 var css_config_str = casper.cli.options.css_config
-
 casper.start(target_url);
 
 casper.thenEvaluate(function(css_config_str) {
