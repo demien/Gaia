@@ -85,29 +85,29 @@ def scrape_dianping():
 def scrape_jd():
     url = 'http://list.jd.com/list.html?cat=737,794,798'
     config = {
-    "collection": {
-        "property_1": {
-            "css": "HTML > BODY > DIV[id='J_searchWrap'] > DIV[id='J_container'] > DIV[id='J_main'] > DIV[class='m-list'] > DIV[class='ml-wrap'] > DIV[id='plist'] > UL[class='gl-warp clearfix'] > LI[class='gl-item'] > DIV[class='gl-i-wrap j-sku-item'] > DIV[class='p-price'] > STRONG[class='J_price'] > I",
-            "re": ".*",
-            "name": "price",
-        },
-        "property_2": {
-            "css": "HTML > BODY > DIV[id='J_searchWrap'] > DIV[id='J_container'] > DIV[id='J_main'] > DIV[class='m-list'] > DIV[class='ml-wrap'] > DIV[id='plist'] > UL[class='gl-warp clearfix'] > LI[class='gl-item'] > DIV[class='gl-i-wrap j-sku-item'] > DIV[class='p-name'] > A > EM:nth-child(1)",
-            "re": ".*",
-            "name": "name",
-        },
-        "property_3": {
-            "css": "HTML > BODY > DIV[id='J_searchWrap'] > DIV[id='J_container'] > DIV[id='J_main'] > DIV[class='m-list'] > DIV[class='ml-wrap'] > DIV[id='plist'] > UL[class='gl-warp clearfix'] > LI[class='gl-item'] > DIV[class='gl-i-wrap j-sku-item'] > DIV[class='p-name'] > A > I[class='promo-words']",
-            "re": ".*",
-            "name": "description",
-        },
-        "property_4": {
-            "css": "HTML > BODY > DIV[id='J_searchWrap'] > DIV[id='J_container'] > DIV[id='J_main'] > DIV[class='m-list'] > DIV[class='ml-wrap'] > DIV[id='plist'] > UL[class='gl-warp clearfix'] > LI[class='gl-item'] > DIV[class='gl-i-wrap j-sku-item'] > DIV[class='p-commit'] > STRONG > A",
-            "re": ".*",
-            "name": "comment",
+        "collection": {
+            "property_1": {
+                "css": "HTML > BODY > DIV[id='J_searchWrap'] > DIV[id='J_container'] > DIV[id='J_main'] > DIV[class='m-list'] > DIV[class='ml-wrap'] > DIV[id='plist'] > UL[class='gl-warp clearfix'] > LI[class='gl-item'] > DIV[class='gl-i-wrap j-sku-item'] > DIV[class='p-price'] > STRONG[class='J_price'] > I",
+                "re": ".*",
+                "name": "price",
+            },
+            "property_2": {
+                "css": "HTML > BODY > DIV[id='J_searchWrap'] > DIV[id='J_container'] > DIV[id='J_main'] > DIV[class='m-list'] > DIV[class='ml-wrap'] > DIV[id='plist'] > UL[class='gl-warp clearfix'] > LI[class='gl-item'] > DIV[class='gl-i-wrap j-sku-item'] > DIV[class='p-name'] > A > EM:nth-child(1)",
+                "re": ".*",
+                "name": "name",
+            },
+            "property_3": {
+                "css": "HTML > BODY > DIV[id='J_searchWrap'] > DIV[id='J_container'] > DIV[id='J_main'] > DIV[class='m-list'] > DIV[class='ml-wrap'] > DIV[id='plist'] > UL[class='gl-warp clearfix'] > LI[class='gl-item'] > DIV[class='gl-i-wrap j-sku-item'] > DIV[class='p-name'] > A > I[class='promo-words']",
+                "re": ".*",
+                "name": "description",
+            },
+            "property_4": {
+                "css": "HTML > BODY > DIV[id='J_searchWrap'] > DIV[id='J_container'] > DIV[id='J_main'] > DIV[class='m-list'] > DIV[class='ml-wrap'] > DIV[id='plist'] > UL[class='gl-warp clearfix'] > LI[class='gl-item'] > DIV[class='gl-i-wrap j-sku-item'] > DIV[class='p-commit'] > STRONG > A",
+                "re": ".*",
+                "name": "comment",
+            }
         }
     }
-}
     return start_hades(url, config)
 
 if __name__ == '__main__':
