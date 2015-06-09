@@ -26,6 +26,9 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
+ROOT = os.path.abspath(os.path.dirname(__file__))
+TEMPLATE_DIRS = [os.path.join(ROOT, "templates")]
+
 ALLOWED_HOSTS = []
 
 

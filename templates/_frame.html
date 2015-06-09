@@ -1,0 +1,22 @@
+<html lang="en">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <script type="text/javascript">{% block page_var %}{% endblock %}</script>
+</head>
+
+<body>
+    <div id="sidebar">
+        {% block sidebar %}
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog/">Blog</a></li>
+        </ul>
+        {% endblock %}
+    </div>
+
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+    <script data-main="/js/require/main" src="/js/lib/require.js"></script>
+</body>
+</html>
