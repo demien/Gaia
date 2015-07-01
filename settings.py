@@ -10,7 +10,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-PROJECT_NAME = 'gaia'
+PROJECT_NAME = 'Gaia'
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_BASE_DIR = os.path.join(BASE_DIR, PROJECT_NAME)
 
