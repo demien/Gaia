@@ -1,0 +1,10 @@
+yum install nodejs
+yum install python-pip
+yum install -y mongodb-org
+git clone --recursive git://github.com/isaacs/npm.git
+node cli.js install npm -gf
+npm install phantomjs -g
+npm install casperjs@1.1.0-beta3 -g
+pip install django
+pip install ipython
+pip install pymongo
