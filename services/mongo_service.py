@@ -1,5 +1,6 @@
 import datetime
 import itertools
+import json
 from collections import defaultdict
 from django.conf import settings
 from pymongo import MongoClient
@@ -145,7 +146,7 @@ class APIService(MongoService):
         cur = self.query(COLLECTIONS.SCRAPE_DATA, criteria)
         result = defaultdict(list)
         for item in cur:
-            for key, values in item.get('scrape_data', {}).iteritems():
+            for key, values in json.loads(item.get('scrape_data', {})).iteritems():
                 result[key] += values
         return result
 
