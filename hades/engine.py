@@ -26,7 +26,7 @@ def start_scraping_engine(url, config, **kwargs):
     """
 
     root = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'core')
-    main_script_filename = root + '/main.js'
+    main_script_filename = root + '/main_with_a.js'
 
     # if timeout and not async:
     #     signal.signal(signal.SIGALRM, alarm_handler)
