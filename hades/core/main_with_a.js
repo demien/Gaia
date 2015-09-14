@@ -4,7 +4,11 @@ var utils = require("utils");
 var target_url = casper.cli.options.url
 var css_config_str = casper.cli.options.css_config
 
+var G = window;
+G.list = []
 casper.start();
+
+
 
 casper.open(target_url, {
     method: 'post',
@@ -24,12 +28,13 @@ casper.open(target_url, {
 });
 
 
-var foo = function(engine, css_config_str){
-    engine.thenEvaluate(function(css_config_str) {
+var scrape_with_css = function(engine, css_config_str){
+    return engine.evaluate(function(css_config_str) {
         var css_config = JSON.parse(css_config_str);
 
         var scrape_css = function(self, css, re, name){
             var elements = self.__utils__.findAll(css);
+            var elements = [].slice.call(elements);
             var temp = elements.map(function(element){
                 var element_data = {}
                 var regExpRes = new RegExp(re).exec(element.innerText);
@@ -77,15 +82,56 @@ var foo = function(engine, css_config_str){
             }
             return dom;
         }
-
-        scrape_data = show_html(this, css_config);
-        self.__utils__.echo(JSON.stringify(scrape_data));
-
+        return show_html(this, css_config);
+        
     }, css_config_str);
 }
 
-foo(casper, css_config_str)
+var get_product_detail = function(product){
+    casper.open(product.unit.href);
+    console.log(product.unit.href);
+    casper.then(function(){
+        config = {
+            "collection": {
+                "property_1": {
+                    "css": ".invest-detail-title",
+                    "re": ".*",
+                    "name": "title",
+                }
+            },
+        }
+        var re = scrape_with_css(casper, JSON.stringify(config));
+        G.list.push(re)
+        // console.log(JSON.stringify(re));
+        // 
+        // return 
+    })
+}
+
+casper.then(function(){
+    var product_list = scrape_with_css(casper, css_config_str);
+    var result = product_list['collection'].map(function(product){
+        console.log('open')
+        casper.open(product.unit.href);
+        casper.then(function(){
+            config = {
+                "collection": {
+                    "property_1": {
+                        "css": ".invest-detail-title",
+                        "re": ".*",
+                        "name": "title",
+                    }
+                },
+            }
+            console.log('scrape')
+            var re = scrape_with_css(casper, JSON.stringify(config));
+            G.list.push(re)
+        })
+    })
+})
+
 
 casper.run(function(){
+    console.log(JSON.stringify(G.list));
     this.exit();
 });
