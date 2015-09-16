@@ -5,7 +5,7 @@ var target_url = 'http://www.baiquandai.com/financePerPage.do?shoveDate' + new D
 var css_config = {
                     "product_list": {
                         "property1": {
-                            "css": ".invest-case-4",
+                            "css": ".invest-case-2",
                             "re": ".*",
                             "name": "product",
                         },

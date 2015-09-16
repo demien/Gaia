@@ -21,6 +21,14 @@ class MongoService(object):
         bulk.count += 1
         context.commit()
 
+    def delete(self, collection, criteria):
+        conn = Connection()
+        context = CommitContext(conn)
+        collection = conn.get_collection(self.db_name, collection)
+        bulk = context.get_bulk_op(collection)
+        bulk.op.find(criteria).remove()
+        context.commit()
+
     def query(self, colelction, criteria, projection=DEFAULT_PROJECTION):
         conn = Connection()
         collection = conn.get_collection(self.db_name, colelction)
@@ -80,7 +88,7 @@ class CommitContext(object):
             result = op_result.op.execute(self.write_concern)
             if op_result.count != -1 and \
                     op_result.count != result['nUpserted'] + result['nMatched'] + result['nInserted']:
-                raise StorageError('Expected ' + str(op_result.count) + ' operations, but performed ' +
+                raise Exception('Expected ' + str(op_result.count) + ' operations, but performed ' +
                                    str(result['nUpserted'] + result['nMatched']))
 
 
@@ -129,14 +137,23 @@ class APIService(MongoService):
         }
         self.write(COLLECTIONS.URLS, post_data)
 
-    def add_scrape_data(self, api_id, crawling_url, version, scrape_data):
+    def add_scrape_data(self, api_id, crawling_url, version, scrape_data, clean=False):
         post_data = {
             'api_id': api_id,
             'crawling_url': crawling_url,
             'version': version,
             'scrape_data': scrape_data,
         }
+        if clean:
+            self.delete_scrape_data(api_id, version)
         self.write(COLLECTIONS.SCRAPE_DATA, post_data)
+
+    def delete_scrape_data(self, api_id, version):
+        criteria = {
+            'api_id': api_id,
+            'version': version
+        }
+        self.delete(COLLECTIONS.SCRAPE_DATA, criteria)
 
     def get_scrape_data(self, api_id, version):
         criteria = {

@@ -38,7 +38,7 @@ def products():
     url = 'http://www.baiquandai.com/financePerPage.do'
     version = 1
     for i in range(1, 6):
-        api_service.add_scrape_data(api_id, url, version, start_hades(i))
+        api_service.add_scrape_data(api_id, url, version, start_hades(i), True)
         
 
 if __name__ == '__main__':
