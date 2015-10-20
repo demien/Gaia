@@ -12,7 +12,7 @@ class IndexCBV(View):
         timestamp = request.GET["timestamp"]
         nonce = request.GET["nonce"]
         if self.checkSignature(signature, timestamp, nonce):
-            return HttpResponse(nonce)
+            return HttpResponse(request.GET["echostr"])
         return HttpResponse('')
 
     def checkSignature(self, signature, timestamp, nonce):
