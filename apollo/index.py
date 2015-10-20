@@ -29,3 +29,9 @@ class IndexCBV(View):
         sha1 = hashlib.sha1()
         sha1.update(content)
         return sha1.hexdigest()
+
+
+class HelloworldCBV(View):
+
+    def get(self, request, *args, **kwargs):
+        return HttpResponse('hello world!')
