@@ -17,7 +17,7 @@ class IndexCBV(View):
 
     def checkSignature(self, signature, timestamp, nonce):
         token = 'b1acky'
-        tmp_array = sorted([token, timestamp, token])
+        tmp_array = sorted([token, timestamp, nonce])
         tmp_str = ''.join(tmp_array)
         if signature == self.sha1(signature):
             return True
