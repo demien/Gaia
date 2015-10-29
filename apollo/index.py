@@ -1,4 +1,6 @@
 import hashlib
+import urllib2
+import json
 from django import http
 from django.http import HttpResponse
 from django.views.generic import View
@@ -41,4 +43,11 @@ class EchoCallbackCBV(View):
 
     def get(self, request, *args, **kwargs):
         code = request.GET.get('code', 'no code')
-        return HttpResponse(code)
+        data = send_request('https://api.weixin.qq.com/sns/oauth2/access_token?appid=wxf9336f499e0715f8&secret=75ffcd0518934dcd6200dad6e7bb78cf&code=%s&grant_type=authorization_code' % code)
+        return HttpResponse(data['openid'])
+
+
+def send_request(url):
+    data = urllib2.urlopen(url)
+    json_data = json.load(data)
+    return json_data
