@@ -44,7 +44,7 @@ class EchoCallbackCBV(View):
     def get(self, request, *args, **kwargs):
         code = request.GET.get('code', 'no code')
         data = send_request('https://api.weixin.qq.com/sns/oauth2/access_token?appid=wxf9336f499e0715f8&secret=75ffcd0518934dcd6200dad6e7bb78cf&code=%s&grant_type=authorization_code' % code)
-        data = send_request('https://api.weixin.qq.com/sns/userinfo?access_token=%s&openid=%s&lang=zh_CN' % (data['access_token', data['openid']]))
+        data = send_request('https://api.weixin.qq.com/sns/userinfo?access_token=%s&openid=%s&lang=zh_CN' % (data['access_token'], data['openid']]))
         return HttpResponse(json.dumps(data))
 
 
