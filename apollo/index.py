@@ -3,6 +3,7 @@ import urllib2
 import json
 from django import http
 from django.http import HttpResponse
+from django.shortcuts import render_to_response
 from django.views.generic import View
 
 
@@ -42,10 +43,11 @@ class HelloworldCBV(View):
 class EchoCallbackCBV(View):
 
     def get(self, request, *args, **kwargs):
+        template_name = 'test/user_info.html'
         code = request.GET.get('code', 'no code')
         data = send_request('https://api.weixin.qq.com/sns/oauth2/access_token?appid=wxf9336f499e0715f8&secret=75ffcd0518934dcd6200dad6e7bb78cf&code=%s&grant_type=authorization_code' % code)
-        data = send_request('https://api.weixin.qq.com/sns/userinfo?access_token=%s&openid=%s&lang=zh_CN' % (data['access_token'], data['openid']]))
-        return HttpResponse(json.dumps(data))
+        data = send_request('https://api.weixin.qq.com/sns/userinfo?access_token=%s&openid=%s&lang=zh_CN' % (data['access_token'], data['openid']))
+        return render_to_response(template_name, data)
 
 
 def send_request(url):
