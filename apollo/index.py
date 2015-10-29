@@ -5,7 +5,7 @@ from django.views.generic import View
 
 
 
-class IndexCBV(View):
+class VerifyWechatCBV(View):
 
     def get(self, request, *args, **kwargs):
         signature = request.GET["signature"]
@@ -35,3 +35,10 @@ class HelloworldCBV(View):
 
     def get(self, request, *args, **kwargs):
         return HttpResponse('hello world!')
+
+
+class EchoCallbackCBV(View):
+
+    def get(self, request, *args, **kwargs):
+        code = request.GET.get('code', 'no code')
+        return HttpResponse(code)

@@ -91,3 +91,7 @@ STORAGE_MONGODB = {
         'PORT': 27017,
     },
 }
+
+TEMPLATE_DIRS = (
+    os.path.join(PROJECT_BASE_DIR, 'templates'),
+)
